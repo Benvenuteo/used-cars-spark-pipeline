@@ -41,3 +41,13 @@ Secrets are read from environment variables and are not written into manifests. 
 ## Reproducibility boundaries
 
 The manifest records the input SHA-256, settings, Python/Spark/Java versions, source size, stage timing, seed and split counts. Primary and transitive Python dependencies are pinned. OS packages are installed from security-updated Debian repositories; the Dockerfile does not claim immutable binary reproducibility. Floating-point reductions and clustering can vary slightly with partitioning/platform. These limits belong beside measured results, not hidden behind a generic “reproducible” claim.
+
+To refresh compatible lock files with `uv`, compile the core first, then constrain extras to the preceding lock. This prevents development and notebook extras from independently pinning conflicting versions of shared dependencies:
+
+```bash
+uv pip compile pyproject.toml -o requirements.txt
+uv pip compile pyproject.toml --extra dev -c requirements.txt -o requirements-dev.txt
+uv pip compile pyproject.toml --extra notebooks -c requirements-dev.txt -o requirements-notebooks.txt
+```
+
+The committed benchmark used a requested 2 GB driver heap, `local[2]`, eight shuffle partitions and an 8 GiB container memory limit. Its record includes the individual timings and uncontrollable OS-cache caveat. The initial shuffle-heavy attempt was interrupted and is not included in reported successful ETL timings.

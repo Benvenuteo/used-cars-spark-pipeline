@@ -1,0 +1,68 @@
+{
+  "workload": "count all rows and sum cast price; CSV is multiline and Parquet column-pruned",
+  "method": "alternating order; Spark cache cleared; OS cache not cleared; no warmup excluded",
+  "environment": {
+    "python": "3.11.17",
+    "spark": "3.5.7",
+    "java": "openjdk version \"17.0.20\" 2026-07-21",
+    "platform": "Linux-6.18.55-x86_64-with-glibc2.39"
+  },
+  "measurements": [
+    {
+      "repeat": 1,
+      "format": "csv",
+      "seconds": 29.61985790200015,
+      "rows": 3000040,
+      "sum_price": 89801298046.52733
+    },
+    {
+      "repeat": 1,
+      "format": "parquet",
+      "seconds": 1.1856663030002892,
+      "rows": 3000040,
+      "sum_price": 89801298046.52698
+    },
+    {
+      "repeat": 2,
+      "format": "parquet",
+      "seconds": 0.5080582130003677,
+      "rows": 3000040,
+      "sum_price": 89801298046.52698
+    },
+    {
+      "repeat": 2,
+      "format": "csv",
+      "seconds": 24.891050160000304,
+      "rows": 3000040,
+      "sum_price": 89801298046.52733
+    },
+    {
+      "repeat": 3,
+      "format": "csv",
+      "seconds": 24.771324878000087,
+      "rows": 3000040,
+      "sum_price": 89801298046.52733
+    },
+    {
+      "repeat": 3,
+      "format": "parquet",
+      "seconds": 0.44070568799998,
+      "rows": 3000040,
+      "sum_price": 89801298046.52698
+    }
+  ],
+  "median_seconds": {
+    "csv": 24.891050160000304,
+    "parquet": 0.5080582130003677
+  },
+  "csv_over_parquet_ratio": 48.99251606032455,
+  "execution_context": {
+    "master": "local[2]",
+    "driver_heap_requested": "2g",
+    "shuffle_partitions": 8,
+    "logical_cpu_count": 9,
+    "container_memory_limit_bytes": 8589934592,
+    "input_sha256": "82166899dce305dc9df14b2eb7a7455f4e6e5591bef87cdcb46f9f94afc27e2b",
+    "context_note": "Requested Spark settings from the invocation; host/cgroup facts captured after the run in the same environment"
+  }
+}

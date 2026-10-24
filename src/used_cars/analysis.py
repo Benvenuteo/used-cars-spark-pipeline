@@ -60,13 +60,21 @@ def analyze(
         write_json(root / "manifest.json", manifest)
         write_json(root / "results.json", payload)
         render_report(root, payload)
-        if mongo_uri:
-            documents = publish(payload, settings.run_id, settings.dataset_kind, mongo_uri)
-            manifest["stages"]["mongo"] = {"status": "complete", "documents": documents}
-            write_json(root / "manifest.json", manifest)
-        LOGGER.info("Analysis complete. Report: %s", root / "report" / "index.html")
-        return payload
     except Exception as exc:
         manifest["stages"]["analysis"] = {"status": "failed", "error_type": type(exc).__name__}
         write_json(root / "manifest.json", manifest)
         raise
+    if mongo_uri:
+        try:
+            documents = publish(payload, settings.run_id, settings.dataset_kind, mongo_uri)
+            manifest["stages"]["mongo"] = {"status": "complete", "documents": documents}
+        except Exception as exc:
+            manifest["stages"]["mongo"] = {"status": "failed", "error_type": type(exc).__name__}
+            write_json(root / "manifest.json", manifest)
+            raise RuntimeError(
+                "Analysis artifacts are complete, but MongoDB publication failed. "
+                "Check connectivity and retry with cars publish."
+            ) from None
+        write_json(root / "manifest.json", manifest)
+    LOGGER.info("Analysis complete. Report: %s", root / "report" / "index.html")
+    return payload

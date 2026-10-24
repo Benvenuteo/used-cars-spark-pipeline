@@ -82,12 +82,20 @@ def main() -> None:
         )
     uri = os.environ.get("MONGO_URI", "mongodb://localhost:27017")
     if arguments.command == "publish":
+        from used_cars.io import utc_now, write_json
         from used_cars.mongo import publish
 
         payload = json.loads((settings.output / "results.json").read_text(encoding="utf-8"))
-        print(
-            f"Published {publish(payload, settings.run_id, settings.dataset_kind, uri)} documents"
-        )
+        count = publish(payload, settings.run_id, settings.dataset_kind, uri)
+        manifest_path = settings.output / "manifest.json"
+        manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+        manifest["stages"]["mongo"] = {
+            "status": "complete",
+            "documents": count,
+            "published_at": utc_now(),
+        }
+        write_json(manifest_path, manifest)
+        print(f"Published {count} documents")
         return
     from used_cars.spark import create_spark
 

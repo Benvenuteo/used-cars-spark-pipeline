@@ -24,6 +24,8 @@ The committed [Kaggle run artifacts](reports/kaggle-v1) come from processing the
 
 ETL and Spark SQL used the entire input; **ML used only the recorded group sample**. The local `local[2]` run took 167.4 seconds for ingestion, including hashing and quality outputs, and 37.1 seconds for SQL, ML and report analysis. These are one-machine observations, not performance guarantees. See [validation scores](reports/kaggle-v1/regression.json), [quality details](reports/kaggle-v1/quality.json) and [the report](reports/kaggle-v1/report/index.html).
 
+For the defined `count + sum(price)` projection, three alternating scans gave median times of **24.891 s for CSV** and **0.508 s for bronze Parquet**. This is a column-pruned workload with an uncontrolled OS cache, not an end-to-end pipeline speedup. The [raw timings and execution context](reports/kaggle-v1/benchmark.json) document the comparison.
+
 ![Most frequent makes among valid historical used-car listings](reports/kaggle-v1/report/top_makes.png)
 
 ## What it demonstrates
