@@ -4,6 +4,28 @@ A local data engineering portfolio project: **PySpark, SQL, Parquet, data qualit
 
 The project builds on a university Big Data/NoSQL notebook. The pipeline code, quality rules, validation strategy and reproducible runs are documented here. Azure and Databricks deployment are future extensions; this version runs Spark locally.
 
+## Measured run on the full source CSV
+
+The committed [Kaggle run artifacts](reports/kaggle-v1) come from processing the actual **9.98 GB** version-1 file, not the synthetic demonstration. The input hash, configuration and environment are in [the manifest](reports/kaggle-v1/manifest.json).
+
+| Measurement | Result |
+| --- | ---: |
+| Parsed source records | 3,000,040 |
+| Invalid core measurements | 144,387 |
+| Valid records outside the study scope | 1,347,315 |
+| Duplicate listings removed | 24 |
+| Silver used-car listings | 1,508,314 |
+| ML input: approximately 5% of vehicle groups | 74,952 |
+| Train / validation / test rows | 52,597 / 11,172 / 11,183 |
+| Selected candidate | GBT, depth 5, 20 iterations |
+| Test MAE / RMSE | $4,055.92 / $7,710.43 |
+| Test R² | 0.7598 |
+| Train-mean baseline test RMSE | $15,734.42 |
+
+ETL and Spark SQL used the entire input; **ML used only the recorded group sample**. The local `local[2]` run took 167.4 seconds for ingestion, including hashing and quality outputs, and 37.1 seconds for SQL, ML and report analysis. These are one-machine observations, not performance guarantees. See [validation scores](reports/kaggle-v1/regression.json), [quality details](reports/kaggle-v1/quality.json) and [the report](reports/kaggle-v1/report/index.html).
+
+![Most frequent makes among valid historical used-car listings](reports/kaggle-v1/report/top_makes.png)
+
 ## What it demonstrates
 
 - Explicit 66-column CSV schema, correct quoted/multiline parsing, SHA-256 input identity.

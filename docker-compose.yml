@@ -1,0 +1,60 @@
+x-runtime: &runtime
+  build: .
+  working_dir: /app
+  init: true
+  environment:
+    MONGO_URI: mongodb://mongo:27017
+    PYSPARK_SUBMIT_ARGS: --driver-memory ${SPARK_DRIVER_MEMORY:-2g} pyspark-shell
+    OPENBLAS_NUM_THREADS: "1"
+    OMP_NUM_THREADS: "1"
+  volumes:
+    - ./data:/app/data
+    - ./outputs:/app/outputs
+    - ./notebooks:/app/notebooks
+
+services:
+  pipeline:
+    <<: *runtime
+    depends_on:
+      mongo:
+        condition: service_healthy
+    ports:
+      - "127.0.0.1:4040:4040"
+
+  mongo:
+    image: mongo:8.0.16
+    volumes:
+      - mongo_data:/data/db
+    healthcheck:
+      test: ["CMD", "mongosh", "--quiet", "--eval", "quit(db.adminCommand('ping').ok ? 0 : 1)"]
+      interval: 5s
+      timeout: 4s
+      retries: 20
+      start_period: 10s
+
+  notebooks:
+    <<: *runtime
+    profiles: ["notebooks"]
+    command: ["jupyter", "lab", "--ip=0.0.0.0", "--port=8888", "--no-browser", "--notebook-dir=/app/notebooks"]
+    ports:
+      - "127.0.0.1:8899:8888"
+      - "127.0.0.1:4041:4040"
+    depends_on:
+      mongo:
+        condition: service_healthy
+
+  test:
+    <<: *runtime
+    profiles: ["test"]
+    environment:
+      TEST_MONGO_URI: mongodb://mongo:27017
+      PYSPARK_SUBMIT_ARGS: --driver-memory 1g pyspark-shell
+      OPENBLAS_NUM_THREADS: "1"
+      OMP_NUM_THREADS: "1"
+    command: ["pytest", "-q"]
+    depends_on:
+      mongo:
+        condition: service_healthy
+
+volumes:
+  mongo_data:

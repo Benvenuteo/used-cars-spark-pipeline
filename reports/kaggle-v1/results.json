@@ -1,0 +1,554 @@
+{
+  "quality": {
+    "input_rows": 3000040,
+    "invalid_rows": 144387,
+    "out_of_scope_rows": 1347315,
+    "duplicate_rows": 24,
+    "silver_rows": 1508314,
+    "quarantine_rows": 1491726,
+    "reconciled": true,
+    "primary_dispositions": [
+      {
+        "route": "duplicate",
+        "primary_reason": "duplicate_listing",
+        "count": 24
+      },
+      {
+        "route": "invalid",
+        "primary_reason": "invalid_mileage",
+        "count": 144387
+      },
+      {
+        "route": "out_of_scope",
+        "primary_reason": "new_vehicle",
+        "count": 1342938
+      },
+      {
+        "route": "out_of_scope",
+        "primary_reason": "price_below_scope",
+        "count": 81
+      },
+      {
+        "route": "out_of_scope",
+        "primary_reason": "year_outside_scope",
+        "count": 4296
+      }
+    ],
+    "all_reason_counts_overlap": [
+      {
+        "reason": "duplicate_listing",
+        "count": 24
+      },
+      {
+        "reason": "invalid_mileage",
+        "count": 144387
+      },
+      {
+        "reason": "new_vehicle",
+        "count": 1471037
+      },
+      {
+        "reason": "price_below_scope",
+        "count": 102
+      },
+      {
+        "reason": "year_outside_scope",
+        "count": 5499
+      }
+    ],
+    "silver_flags": {
+      "horsepower_missing": 55863,
+      "vin_unusable": 0,
+      "extreme_value": 3133
+    }
+  },
+  "market": {
+    "overview": [
+      {
+        "listings": 1508314,
+        "approximate_vehicles": 1486288,
+        "mean_price_usd": 22528.235423729417,
+        "median_price_usd": 19340.0,
+        "mean_mileage_miles": 58586.80573143258,
+        "min_model_year": 1991,
+        "max_model_year": 2021
+      }
+    ],
+    "by_make": [
+      {
+        "make_name": "FORD",
+        "listings": 217754,
+        "mean_price_usd": 22923.237962058098,
+        "median_price_usd": 19955.0,
+        "mean_mileage_miles": 63997.80944092875
+      },
+      {
+        "make_name": "CHEVROLET",
+        "listings": 186316,
+        "mean_price_usd": 22243.615095858648,
+        "median_price_usd": 18995.0,
+        "mean_mileage_miles": 62182.687434251486
+      },
+      {
+        "make_name": "TOYOTA",
+        "listings": 135096,
+        "mean_price_usd": 20310.284796737134,
+        "median_price_usd": 18900.0,
+        "mean_mileage_miles": 63997.81735950732
+      },
+      {
+        "make_name": "NISSAN",
+        "listings": 117196,
+        "mean_price_usd": 17307.858860345063,
+        "median_price_usd": 16791.0,
+        "mean_mileage_miles": 51421.55898665483
+      },
+      {
+        "make_name": "HONDA",
+        "listings": 93538,
+        "mean_price_usd": 17560.58080859116,
+        "median_price_usd": 17491.0,
+        "mean_mileage_miles": 66544.62444140349
+      },
+      {
+        "make_name": "JEEP",
+        "listings": 79332,
+        "mean_price_usd": 23729.96616799022,
+        "median_price_usd": 22139.0,
+        "mean_mileage_miles": 53848.37508193415
+      },
+      {
+        "make_name": "HYUNDAI",
+        "listings": 58381,
+        "mean_price_usd": 14721.161157910965,
+        "median_price_usd": 14950.0,
+        "mean_mileage_miles": 54613.713382778646
+      },
+      {
+        "make_name": "DODGE",
+        "listings": 58049,
+        "mean_price_usd": 19814.914494943925,
+        "median_price_usd": 18469.0,
+        "mean_mileage_miles": 64849.099519371564
+      },
+      {
+        "make_name": "GMC",
+        "listings": 53403,
+        "mean_price_usd": 27992.37252045765,
+        "median_price_usd": 25975.0,
+        "mean_mileage_miles": 66667.3677883265
+      },
+      {
+        "make_name": "KIA",
+        "listings": 52579,
+        "mean_price_usd": 15329.207292264973,
+        "median_price_usd": 15000.0,
+        "mean_mileage_miles": 51692.72154282128
+      },
+      {
+        "make_name": "BMW",
+        "listings": 40894,
+        "mean_price_usd": 30282.852666650364,
+        "median_price_usd": 28599.0,
+        "mean_mileage_miles": 47775.80603511517
+      },
+      {
+        "make_name": "MERCEDES-BENZ",
+        "listings": 40261,
+        "mean_price_usd": 34718.5185559226,
+        "median_price_usd": 30991.0,
+        "mean_mileage_miles": 46623.6118824669
+      },
+      {
+        "make_name": "VOLKSWAGEN",
+        "listings": 38105,
+        "mean_price_usd": 15883.166979923893,
+        "median_price_usd": 14896.0,
+        "mean_mileage_miles": 52011.06463718672
+      },
+      {
+        "make_name": "SUBARU",
+        "listings": 37184,
+        "mean_price_usd": 19371.993981551204,
+        "median_price_usd": 19895.0,
+        "mean_mileage_miles": 56372.50960090361
+      },
+      {
+        "make_name": "RAM",
+        "listings": 33173,
+        "mean_price_usd": 32786.66105869231,
+        "median_price_usd": 31995.0,
+        "mean_mileage_miles": 53873.026859192716
+      },
+      {
+        "make_name": "LEXUS",
+        "listings": 27945,
+        "mean_price_usd": 27053.211220611913,
+        "median_price_usd": 27954.0,
+        "mean_mileage_miles": 61756.90635176239
+      },
+      {
+        "make_name": "BUICK",
+        "listings": 25949,
+        "mean_price_usd": 18307.151844001695,
+        "median_price_usd": 17971.0,
+        "mean_mileage_miles": 53811.62083317276
+      },
+      {
+        "make_name": "MAZDA",
+        "listings": 23999,
+        "mean_price_usd": 17469.117271136296,
+        "median_price_usd": 17990.0,
+        "mean_mileage_miles": 53656.029126213594
+      },
+      {
+        "make_name": "CHRYSLER",
+        "listings": 23889,
+        "mean_price_usd": 17144.483638913305,
+        "median_price_usd": 17394.0,
+        "mean_mileage_miles": 68589.83908912052
+      },
+      {
+        "make_name": "CADILLAC",
+        "listings": 23579,
+        "mean_price_usd": 28446.870884685526,
+        "median_price_usd": 26995.0,
+        "mean_mileage_miles": 53601.00343526019
+      }
+    ],
+    "by_year": [
+      {
+        "year": 1991,
+        "listings": 266,
+        "mean_price_usd": 21590.398496240603,
+        "median_price_usd": 11900.0
+      },
+      {
+        "year": 1992,
+        "listings": 262,
+        "mean_price_usd": 19240.324427480915,
+        "median_price_usd": 8995.0
+      },
+      {
+        "year": 1993,
+        "listings": 331,
+        "mean_price_usd": 14912.353474320242,
+        "median_price_usd": 9900.0
+      },
+      {
+        "year": 1994,
+        "listings": 482,
+        "mean_price_usd": 15007.06846473029,
+        "median_price_usd": 7995.0
+      },
+      {
+        "year": 1995,
+        "listings": 578,
+        "mean_price_usd": 14514.153979238754,
+        "median_price_usd": 6999.0
+      },
+      {
+        "year": 1996,
+        "listings": 598,
+        "mean_price_usd": 15409.38127090301,
+        "median_price_usd": 5995.0
+      },
+      {
+        "year": 1997,
+        "listings": 937,
+        "mean_price_usd": 15950.692636072572,
+        "median_price_usd": 5098.0
+      },
+      {
+        "year": 1998,
+        "listings": 1123,
+        "mean_price_usd": 8353.476402493321,
+        "median_price_usd": 4700.0
+      },
+      {
+        "year": 1999,
+        "listings": 1839,
+        "mean_price_usd": 8354.359706362153,
+        "median_price_usd": 4995.0
+      },
+      {
+        "year": 2000,
+        "listings": 2593,
+        "mean_price_usd": 7618.132664866949,
+        "median_price_usd": 4995.0
+      },
+      {
+        "year": 2001,
+        "listings": 3403,
+        "mean_price_usd": 8360.073905377609,
+        "median_price_usd": 4990.0
+      },
+      {
+        "year": 2002,
+        "listings": 5172,
+        "mean_price_usd": 7566.590193348802,
+        "median_price_usd": 4995.0
+      },
+      {
+        "year": 2003,
+        "listings": 7267,
+        "mean_price_usd": 8555.04238337691,
+        "median_price_usd": 5465.0
+      },
+      {
+        "year": 2004,
+        "listings": 9928,
+        "mean_price_usd": 8188.928965551975,
+        "median_price_usd": 5995.0
+      },
+      {
+        "year": 2005,
+        "listings": 12458,
+        "mean_price_usd": 9001.713019746348,
+        "median_price_usd": 5995.0
+      },
+      {
+        "year": 2006,
+        "listings": 16293,
+        "mean_price_usd": 8715.38980666544,
+        "median_price_usd": 6543.0
+      },
+      {
+        "year": 2007,
+        "listings": 22549,
+        "mean_price_usd": 9284.421176992328,
+        "median_price_usd": 7000.0
+      },
+      {
+        "year": 2008,
+        "listings": 27330,
+        "mean_price_usd": 10044.89644895719,
+        "median_price_usd": 7988.0
+      },
+      {
+        "year": 2009,
+        "listings": 22365,
+        "mean_price_usd": 9996.423084283477,
+        "median_price_usd": 7995.0
+      },
+      {
+        "year": 2010,
+        "listings": 31209,
+        "mean_price_usd": 10825.473994040181,
+        "median_price_usd": 8995.0
+      },
+      {
+        "year": 2011,
+        "listings": 43323,
+        "mean_price_usd": 12512.015721902915,
+        "median_price_usd": 10489.0
+      },
+      {
+        "year": 2012,
+        "listings": 52288,
+        "mean_price_usd": 12932.321409501224,
+        "median_price_usd": 10980.0
+      },
+      {
+        "year": 2013,
+        "listings": 67623,
+        "mean_price_usd": 14188.486492820492,
+        "median_price_usd": 12488.0
+      },
+      {
+        "year": 2014,
+        "listings": 76035,
+        "mean_price_usd": 16683.029434207932,
+        "median_price_usd": 13997.0
+      },
+      {
+        "year": 2015,
+        "listings": 92085,
+        "mean_price_usd": 19526.66519237661,
+        "median_price_usd": 16398.0
+      },
+      {
+        "year": 2016,
+        "listings": 121218,
+        "mean_price_usd": 21661.33341812272,
+        "median_price_usd": 18000.0
+      },
+      {
+        "year": 2017,
+        "listings": 346536,
+        "mean_price_usd": 24910.919295917305,
+        "median_price_usd": 22188.0
+      },
+      {
+        "year": 2018,
+        "listings": 206399,
+        "mean_price_usd": 27494.962982669487,
+        "median_price_usd": 24275.0
+      },
+      {
+        "year": 2019,
+        "listings": 245735,
+        "mean_price_usd": 28304.838167273687,
+        "median_price_usd": 24338.0
+      },
+      {
+        "year": 2020,
+        "listings": 89770,
+        "mean_price_usd": 35894.75576528907,
+        "median_price_usd": 32981.0
+      },
+      {
+        "year": 2021,
+        "listings": 319,
+        "mean_price_usd": 43400.45141065831,
+        "median_price_usd": 39975.0
+      }
+    ],
+    "by_mileage": [
+      {
+        "mileage_band_miles": "0–10k",
+        "listings": 108161,
+        "median_price_usd": 31795.0
+      },
+      {
+        "mileage_band_miles": "100–150k",
+        "listings": 190813,
+        "median_price_usd": 9995.0
+      },
+      {
+        "mileage_band_miles": "10–50k",
+        "listings": 770496,
+        "median_price_usd": 22999.0
+      },
+      {
+        "mileage_band_miles": "150k+",
+        "listings": 85683,
+        "median_price_usd": 6995.0
+      },
+      {
+        "mileage_band_miles": "50–100k",
+        "listings": 353161,
+        "median_price_usd": 15931.0
+      }
+    ]
+  },
+  "models": {
+    "input_rows": 74952,
+    "requested_fraction": 0.05,
+    "regression": {
+      "split_policy": "VIN group hash 70/15/15; listing/hash fallback when VIN is unusable",
+      "split_rows": {
+        "test": 11183,
+        "validation": 11172,
+        "train": 52597
+      },
+      "baseline": {
+        "train_mean_usd": 22624.380867539974,
+        "validation": {
+          "rows": 11172,
+          "mae_usd": 9996.923386588891,
+          "rmse_usd": 15617.365022367003,
+          "r2": -0.0001480615645859107
+        },
+        "test": {
+          "rows": 11183,
+          "mae_usd": 9987.146224519824,
+          "rmse_usd": 15734.424731920457,
+          "r2": -0.00020011054918578353
+        }
+      },
+      "candidates": [
+        {
+          "model": "ridge",
+          "validation": {
+            "rows": 11172,
+            "mae_usd": 4328.9781059335755,
+            "rmse_usd": 8139.668480931993,
+            "r2": 0.7283171595014861
+          }
+        },
+        {
+          "model": "gbt_depth3",
+          "validation": {
+            "rows": 11172,
+            "mae_usd": 4507.091182209328,
+            "rmse_usd": 8364.49449088684,
+            "r2": 0.7131015682902994
+          }
+        },
+        {
+          "model": "gbt_depth5",
+          "validation": {
+            "rows": 11172,
+            "mae_usd": 4059.616427080823,
+            "rmse_usd": 7886.597234302918,
+            "r2": 0.7449483722373683
+          }
+        }
+      ],
+      "selected_model": "gbt_depth5",
+      "selection_metric": "validation RMSE in USD",
+      "test": {
+        "rows": 11183,
+        "mae_usd": 4055.9168386762612,
+        "rmse_usd": 7710.432733663101,
+        "r2": 0.7598167787544416
+      },
+      "target": "advertised asking price; not transaction price"
+    },
+    "clustering": {
+      "features": [
+        "asking_price_usd",
+        "mileage_miles",
+        "model_year"
+      ],
+      "selected_k": 4,
+      "seed": 42,
+      "candidates": [
+        {
+          "k": 3,
+          "silhouette_squared_euclidean": 0.5284068782805729
+        },
+        {
+          "k": 4,
+          "silhouette_squared_euclidean": 0.578973296412866
+        },
+        {
+          "k": 5,
+          "silhouette_squared_euclidean": 0.4443968743666661
+        }
+      ],
+      "clusters": [
+        {
+          "cluster": 0,
+          "listings": 18551,
+          "mean_price_usd": 15188.932557813594,
+          "mean_mileage_miles": 90945.09007600669,
+          "mean_model_year": 2013.836936014231
+        },
+        {
+          "cluster": 1,
+          "listings": 4665,
+          "mean_price_usd": 62098.051232583064,
+          "mean_mileage_miles": 21184.466666666667,
+          "mean_model_year": 2018.2711682743836
+        },
+        {
+          "cluster": 2,
+          "listings": 8635,
+          "mean_price_usd": 8524.735205558773,
+          "mean_mileage_miles": 147755.34950781704,
+          "mean_model_year": 2007.1476548928779
+        },
+        {
+          "cluster": 3,
+          "listings": 43101,
+          "mean_price_usd": 24270.027535556022,
+          "mean_mileage_miles": 31073.837405164613,
+          "mean_model_year": 2017.7760376789402
+        }
+      ],
+      "limitation": "Exploratory in-sample silhouette; not an independent validation of segments"
+    }
+  }
+}

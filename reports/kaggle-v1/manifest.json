@@ -1,0 +1,53 @@
+{
+  "run_id": "kaggle-v1",
+  "dataset_kind": "kaggle",
+  "settings": {
+    "output": "outputs/kaggle-v1",
+    "dataset_kind": "kaggle",
+    "run_id": "kaggle-v1",
+    "master": "local[2]",
+    "partitions": 8,
+    "seed": 42,
+    "model_fraction": 0.05,
+    "cluster_candidates": [
+      3,
+      4,
+      5
+    ],
+    "min_price": 500.0,
+    "min_year": 1991,
+    "max_year": 2021
+  },
+  "started_at": "2026-10-24T14:59:58.894821+00:00",
+  "source": {
+    "name": "used_cars_data.csv",
+    "bytes": 9980208148,
+    "sha256": "82166899dce305dc9df14b2eb7a7455f4e6e5591bef87cdcb46f9f94afc27e2b"
+  },
+  "environment": {
+    "python": "3.11.17",
+    "spark": "3.5.7",
+    "java": "openjdk version \"17.0.20\" 2026-07-21",
+    "platform": "Linux-6.18.55-x86_64-with-glibc2.39"
+  },
+  "stages": {
+    "ingest": {
+      "status": "complete",
+      "seconds": 167.449,
+      "csv_to_bronze_seconds": 102.719,
+      "input_rows": 3000040,
+      "invalid_rows": 144387,
+      "out_of_scope_rows": 1347315,
+      "duplicate_rows": 24,
+      "silver_rows": 1508314,
+      "quarantine_rows": 1491726
+    },
+    "analysis": {
+      "status": "complete",
+      "seconds": 37.106,
+      "ml_skipped": false,
+      "completed_at": "2026-10-24T15:03:23.964077+00:00"
+    }
+  },
+  "export_note": "Machine-specific output path normalized; metrics are unchanged"
+}

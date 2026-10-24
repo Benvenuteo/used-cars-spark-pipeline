@@ -1,0 +1,63 @@
+{
+  "input_rows": 3000040,
+  "invalid_rows": 144387,
+  "out_of_scope_rows": 1347315,
+  "duplicate_rows": 24,
+  "silver_rows": 1508314,
+  "quarantine_rows": 1491726,
+  "reconciled": true,
+  "primary_dispositions": [
+    {
+      "route": "duplicate",
+      "primary_reason": "duplicate_listing",
+      "count": 24
+    },
+    {
+      "route": "invalid",
+      "primary_reason": "invalid_mileage",
+      "count": 144387
+    },
+    {
+      "route": "out_of_scope",
+      "primary_reason": "new_vehicle",
+      "count": 1342938
+    },
+    {
+      "route": "out_of_scope",
+      "primary_reason": "price_below_scope",
+      "count": 81
+    },
+    {
+      "route": "out_of_scope",
+      "primary_reason": "year_outside_scope",
+      "count": 4296
+    }
+  ],
+  "all_reason_counts_overlap": [
+    {
+      "reason": "duplicate_listing",
+      "count": 24
+    },
+    {
+      "reason": "invalid_mileage",
+      "count": 144387
+    },
+    {
+      "reason": "new_vehicle",
+      "count": 1471037
+    },
+    {
+      "reason": "price_below_scope",
+      "count": 102
+    },
+    {
+      "reason": "year_outside_scope",
+      "count": 5499
+    }
+  ],
+  "silver_flags": {
+    "horsepower_missing": 55863,
+    "vin_unusable": 0,
+    "extreme_value": 3133
+  }
+}

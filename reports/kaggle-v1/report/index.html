@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Used Cars — kaggle-v1</title>
+<style>
+body{font:16px/1.6 system-ui,sans-serif;color:#163247;background:#f2f6f8;margin:0}
+main{max-width:1050px;margin:auto;padding:32px}section{background:white;padding:24px;margin:20px 0;border-radius:12px}
+h1,h2,h3{line-height:1.25}.label{color:#824300;font-weight:700}img{width:100%;height:auto}
+table{border-collapse:collapse;width:100%;font-size:14px;display:block;overflow-x:auto}
+th,td{padding:9px 12px;border-bottom:1px solid #dce5ea;text-align:left}th{background:#eaf1f5}
+code{overflow-wrap:anywhere}a{color:#246b8e}
+</style><main><h1>US used-car listing analysis</h1><p class="label">Kaggle v1 listings, September 2020</p>
+<p>Run: <code>kaggle-v1</code> · Seed: 42</p>
+<section><h2>Population and data quality</h2>
+<p>Used listings only, price &gt; 500 USD, model years
+1991–2021. Missing horsepower is imputed from train.
+Plausible extreme prices and mileage are flagged and retained.</p>
+<table><thead><tr><th>disposition</th><th>rows</th></tr></thead><tbody><tr><td>input_rows</td><td>3000040</td></tr><tr><td>invalid_rows</td><td>144387</td></tr><tr><td>out_of_scope_rows</td><td>1347315</td></tr><tr><td>duplicate_rows</td><td>24</td></tr><tr><td>silver_rows</td><td>1508314</td></tr></tbody></table><h3>Exclusive primary rejection reasons</h3><table><thead><tr><th>route</th><th>primary_reason</th><th>count</th></tr></thead><tbody><tr><td>duplicate</td><td>duplicate_listing</td><td>24</td></tr><tr><td>invalid</td><td>invalid_mileage</td><td>144387</td></tr><tr><td>out_of_scope</td><td>new_vehicle</td><td>1342938</td></tr><tr><td>out_of_scope</td><td>price_below_scope</td><td>81</td></tr><tr><td>out_of_scope</td><td>year_outside_scope</td><td>4296</td></tr></tbody></table></section>
+<section><h2>Market overview</h2><table><thead><tr><th>listings</th><th>approximate_vehicles</th><th>mean_price_usd</th><th>median_price_usd</th><th>mean_mileage_miles</th><th>min_model_year</th><th>max_model_year</th></tr></thead><tbody><tr><td>1508314</td><td>1486288</td><td>22,528.24</td><td>19,340.00</td><td>58,586.81</td><td>1991</td><td>2021</td></tr></tbody></table>
+<img src="top_makes.png" alt="Top ten vehicle makes by valid listing count">
+<img src="prices_by_year.png" alt="Median asking price in USD by model year"></section>
+<section><h2>Models</h2><p>Selected using validation RMSE: <strong>gbt_depth5</strong>. Models use 74,952 vehicle-group-sampled listings.</p><table><thead><tr><th>model</th><th>rows</th><th>mae_usd</th><th>rmse_usd</th><th>r2</th></tr></thead><tbody><tr><td>Train-mean baseline</td><td>11183</td><td>9,987.15</td><td>15,734.42</td><td>-0.00</td></tr><tr><td>gbt_depth5</td><td>11183</td><td>4,055.92</td><td>7,710.43</td><td>0.76</td></tr></tbody></table><p>Target: advertised asking price. MAE and RMSE use USD. These are not sale-price estimates.</p><h3>Exploratory K-Means segments</h3><table><thead><tr><th>cluster</th><th>listings</th><th>mean_price_usd</th><th>mean_mileage_miles</th><th>mean_model_year</th></tr></thead><tbody><tr><td>0</td><td>18551</td><td>15,188.93</td><td>90,945.09</td><td>2,013.84</td></tr><tr><td>1</td><td>4665</td><td>62,098.05</td><td>21,184.47</td><td>2,018.27</td></tr><tr><td>2</td><td>8635</td><td>8,524.74</td><td>147,755.35</td><td>2,007.15</td></tr><tr><td>3</td><td>43101</td><td>24,270.03</td><td>31,073.84</td><td>2,017.78</td></tr></tbody></table><p>k selected by in-sample squared-Euclidean silhouette; segment labels have no natural order.</p></section>
+<section><h2>Scope and limitations</h2><p>Historical advertised inventory is not a representative sample of
+all US transactions. Source collection: CarGurus inventory, September 2020. No temporal generalization
+claim is made. VIN grouping reduces repeated-vehicle leakage; missing VINs use listing/hash fallback.
+Descriptions, dealer details and URLs are excluded from predictive features.</p>
+<p>Execution: local Spark, 3.5.7;
+Python 3.11.17.
+Input SHA-256: <code>82166899dce305dc9df14b2eb7a7455f4e6e5591bef87cdcb46f9f94afc27e2b</code>.</p>
+<p><a href="https://www.kaggle.com/datasets/ananaymital/us-used-cars-dataset">Dataset and usage notice</a></p></section>
+</main></html>

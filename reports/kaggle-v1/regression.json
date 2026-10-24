@@ -1,0 +1,61 @@
+{
+  "split_policy": "VIN group hash 70/15/15; listing/hash fallback when VIN is unusable",
+  "split_rows": {
+    "test": 11183,
+    "validation": 11172,
+    "train": 52597
+  },
+  "baseline": {
+    "train_mean_usd": 22624.380867539974,
+    "validation": {
+      "rows": 11172,
+      "mae_usd": 9996.923386588891,
+      "rmse_usd": 15617.365022367003,
+      "r2": -0.0001480615645859107
+    },
+    "test": {
+      "rows": 11183,
+      "mae_usd": 9987.146224519824,
+      "rmse_usd": 15734.424731920457,
+      "r2": -0.00020011054918578353
+    }
+  },
+  "candidates": [
+    {
+      "model": "ridge",
+      "validation": {
+        "rows": 11172,
+        "mae_usd": 4328.9781059335755,
+        "rmse_usd": 8139.668480931993,
+        "r2": 0.7283171595014861
+      }
+    },
+    {
+      "model": "gbt_depth3",
+      "validation": {
+        "rows": 11172,
+        "mae_usd": 4507.091182209328,
+        "rmse_usd": 8364.49449088684,
+        "r2": 0.7131015682902994
+      }
+    },
+    {
+      "model": "gbt_depth5",
+      "validation": {
+        "rows": 11172,
+        "mae_usd": 4059.616427080823,
+        "rmse_usd": 7886.597234302918,
+        "r2": 0.7449483722373683
+      }
+    }
+  ],
+  "selected_model": "gbt_depth5",
+  "selection_metric": "validation RMSE in USD",
+  "test": {
+    "rows": 11183,
+    "mae_usd": 4055.9168386762612,
+    "rmse_usd": 7710.432733663101,
+    "r2": 0.7598167787544416
+  },
+  "target": "advertised asking price; not transaction price"
+}

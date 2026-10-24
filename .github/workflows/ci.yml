@@ -1,0 +1,72 @@
+name: Pipeline checks
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    services:
+      mongo:
+        image: mongo:8.0.16
+        ports:
+          - 27017:27017
+        options: >-
+          --health-cmd "mongosh --quiet --eval 'quit(db.adminCommand({ping:1}).ok ? 0 : 1)'"
+          --health-interval 5s --health-timeout 5s --health-retries 20
+    env:
+      TEST_MONGO_URI: mongodb://localhost:27017
+      MONGO_URI: mongodb://localhost:27017
+      PYSPARK_SUBMIT_ARGS: --driver-memory 2g pyspark-shell
+      OPENBLAS_NUM_THREADS: "1"
+      OMP_NUM_THREADS: "1"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+      - run: python -m pip install -r requirements-dev.txt
+      - run: python -m pip install --no-deps -e .
+      - run: ruff check . && ruff format --check .
+      - run: pytest -q --strict-markers
+      - name: Full synthetic pipeline with models and MongoDB
+        run: |
+          cars demo --rows 400
+          cars run --input data/demo/used_cars_data.csv --output outputs/ci --run-id ci --dataset-kind synthetic --publish-mongo
+          cars publish --output outputs/ci
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: synthetic-smoke-results
+          path: |
+            outputs/ci/report/
+            outputs/ci/*.json
+
+  container:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build the pinned Docker environment
+        run: docker compose build pipeline
+      - name: Exercise container mounts, JVM, ETL and MongoDB readiness
+        run: |
+          mkdir -p data outputs
+          chmod 777 data outputs
+          docker compose up -d --wait mongo
+          docker compose run --rm pipeline cars demo --rows 200
+          docker compose run --rm pipeline cars run --input data/demo/used_cars_data.csv --output outputs/container-ci --run-id container-ci --dataset-kind synthetic --skip-ml --publish-mongo
+      - name: Stop services
+        if: always()
+        run: docker compose down -v

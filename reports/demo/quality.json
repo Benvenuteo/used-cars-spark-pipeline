@@ -1,0 +1,90 @@
+{
+  "input_rows": 1200,
+  "invalid_rows": 48,
+  "out_of_scope_rows": 36,
+  "duplicate_rows": 12,
+  "silver_rows": 1104,
+  "quarantine_rows": 96,
+  "reconciled": true,
+  "primary_dispositions": [
+    {
+      "route": "duplicate",
+      "primary_reason": "duplicate_listing",
+      "count": 12
+    },
+    {
+      "route": "invalid",
+      "primary_reason": "invalid_mileage",
+      "count": 12
+    },
+    {
+      "route": "invalid",
+      "primary_reason": "invalid_price",
+      "count": 12
+    },
+    {
+      "route": "invalid",
+      "primary_reason": "missing_make",
+      "count": 12
+    },
+    {
+      "route": "invalid",
+      "primary_reason": "unknown_new_flag",
+      "count": 12
+    },
+    {
+      "route": "out_of_scope",
+      "primary_reason": "new_vehicle",
+      "count": 12
+    },
+    {
+      "route": "out_of_scope",
+      "primary_reason": "price_below_scope",
+      "count": 12
+    },
+    {
+      "route": "out_of_scope",
+      "primary_reason": "year_outside_scope",
+      "count": 12
+    }
+  ],
+  "all_reason_counts_overlap": [
+    {
+      "reason": "duplicate_listing",
+      "count": 12
+    },
+    {
+      "reason": "invalid_mileage",
+      "count": 12
+    },
+    {
+      "reason": "invalid_price",
+      "count": 12
+    },
+    {
+      "reason": "missing_make",
+      "count": 12
+    },
+    {
+      "reason": "new_vehicle",
+      "count": 12
+    },
+    {
+      "reason": "price_below_scope",
+      "count": 12
+    },
+    {
+      "reason": "unknown_new_flag",
+      "count": 12
+    },
+    {
+      "reason": "year_outside_scope",
+      "count": 12
+    }
+  ],
+  "silver_flags": {
+    "horsepower_missing": 12,
+    "vin_unusable": 24,
+    "extreme_value": 0
+  }
+}

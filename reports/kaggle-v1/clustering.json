@@ -1,0 +1,54 @@
+{
+  "features": [
+    "asking_price_usd",
+    "mileage_miles",
+    "model_year"
+  ],
+  "selected_k": 4,
+  "seed": 42,
+  "candidates": [
+    {
+      "k": 3,
+      "silhouette_squared_euclidean": 0.5284068782805729
+    },
+    {
+      "k": 4,
+      "silhouette_squared_euclidean": 0.578973296412866
+    },
+    {
+      "k": 5,
+      "silhouette_squared_euclidean": 0.4443968743666661
+    }
+  ],
+  "clusters": [
+    {
+      "cluster": 0,
+      "listings": 18551,
+      "mean_price_usd": 15188.932557813594,
+      "mean_mileage_miles": 90945.09007600669,
+      "mean_model_year": 2013.836936014231
+    },
+    {
+      "cluster": 1,
+      "listings": 4665,
+      "mean_price_usd": 62098.051232583064,
+      "mean_mileage_miles": 21184.466666666667,
+      "mean_model_year": 2018.2711682743836
+    },
+    {
+      "cluster": 2,
+      "listings": 8635,
+      "mean_price_usd": 8524.735205558773,
+      "mean_mileage_miles": 147755.34950781704,
+      "mean_model_year": 2007.1476548928779
+    },
+    {
+      "cluster": 3,
+      "listings": 43101,
+      "mean_price_usd": 24270.027535556022,
+      "mean_mileage_miles": 31073.837405164613,
+      "mean_model_year": 2017.7760376789402
+    }
+  ],
+  "limitation": "Exploratory in-sample silhouette; not an independent validation of segments"
+}
